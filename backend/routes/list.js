@@ -21,23 +21,23 @@ router.post('/', verify, async (req, res) => {
 
 
 //
-// //UPDATE
-// router.put('/:id', verify, async (req,res) => {
-//     if (req.user.isAdmin){
-//         try{
-//             const newMovie = await Movie.findByIdAndUpdate(req.params.id, {
-//                 $set:req.body,
-//             },{
-//                 new : true,
-//             });
-//             res.status(200).json(newMovie);
-//         }catch (err){
-//             res.status(500).json(err);
-//         }
-//     } else{
-//         res.status(403).json('বা চুদির ভাই বা , দেকাই পাচ্চু তোর পারমিশন নাই, তুই হ্যাক করবার আচ্ছু ??? ');
-//     }
-// });
+//UPDATE
+router.put('/:id', verify, async (req,res) => {
+    if (req.user.isAdmin){
+        try{
+            const updateList = await List.findByIdAndUpdate(req.params.id, {
+                $set:req.body,
+            },{
+                new : true,
+            });
+            res.status(200).json(updateList);
+        }catch (err){
+            res.status(500).json(err);
+        }
+    } else{
+        res.status(403).json('বা চুদির ভাই বা , দেকাই পাচ্চু তোর পারমিশন নাই, তুই হ্যাক করবার আচ্ছু ??? ');
+    }
+});
 //
 //
 //DELETE
